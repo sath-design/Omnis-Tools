@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://*.googleapis.com https://*.firebaseio.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <title>About Us - Omnis</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 font-sans antialiased min-h-screen">
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-gray-900 to-purple-900/10"></div>
+    </div>
+
+    <nav class="relative z-10 border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo_white.png" alt="Omnis" class="h-6 w-auto">
+            </a>
+            <div
+                class="flex bg-gray-800 rounded-md p-1 border border-gray-700 text-[10px] font-bold uppercase tracking-widest ring-1 ring-white/10">
+                <button id="lang-en" class="px-3 py-1 rounded transition-all hover:text-white">EN</button>
+                <button id="lang-jp" class="px-3 py-1 rounded transition-all hover:text-white">JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-5xl font-extrabold text-white mb-6" data-i18n="our_philosophy">Our Philosophy</h1>
+        <p class="text-xl text-blue-400 mb-12 font-medium" data-i18n="philosophy_tagline">"Privacy-First, Client-Side
+            Logic, Professional Performance."
+        </p>
+
+        <div class="space-y-16 text-left text-gray-400 leading-relaxed">
+            <section class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 ring-1 ring-white/5">
+                <h2 class="text-2xl font-bold text-white mb-4" data-i18n="who_we_are_title">Who We Are</h2>
+                <p data-i18n="who_we_are_desc">Omnis is a high-performance web tool suite developed for modern creators,
+                    developers, and small
+                    business owners. We believe that professional tools should be accessible, lightning-fast, and above
+                    all, secure.</p>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 border-l-2 border-blue-600 pl-8">
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="zero_latency_title">Zero-Latency Tools</h3>
+                    <p class="text-sm" data-i18n="zero_latency_desc">By utilizing modern APIs like WebCodecs and
+                        WebAssembly, we process data directly
+                        in your browser, eliminating wait times and server Round-trips.</p>
+                </div>
+                <div class="p-6 border-l-2 border-purple-600 pl-8">
+                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="privacy_comp_title">Privacy Without
+                        Compromise</h3>
+                    <p class="text-sm" data-i18n="privacy_comp_desc">Your data never leaves your device. We use local
+                        processing to ensure that
+                        sensitive files and information stay under your control at all times.</p>
+                </div>
+            </section>
+
+            <section
+                class="text-center bg-gradient-to-r from-blue-600/20 to-purple-600/20 p-12 rounded-3xl border border-white/10">
+                <h2 class="text-2xl font-bold text-white mb-4" data-i18n="global_reach_title">Global Support</h2>
+                <p class="max-w-xl mx-auto" data-i18n="global_reach_desc">Omnis is continuously evolving to support
+                    global standards and multi-language interfaces to empower users worldwide.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="relative z-10 border-t border-gray-800 py-12 text-center text-xs text-gray-600">
+        <p data-i18n="copyright">&copy; 2026 Omnis. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { initI18n } from '../Shared/i18n.js';
+        document.addEventListener('DOMContentLoaded', () => initI18n('legal'));
+    </script>
+</body>
+
+</html>

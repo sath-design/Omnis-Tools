@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="DataSuite - Professional JSON/CSV conversion and validation tool with VS Code-style editor.">
+    <meta name="keywords" content="JSON converter, CSV validator, data suite, local processing, syntax highlight">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/DataSuite/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/DataSuite/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/DataSuite/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/DataSuite/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/DataSuite/">
+    <meta property="og:title" content="DataSuite - Omnis">
+    <meta property="og:description" content="パースエラーに強いJSON/CSVツール。ローカル処理で機密データも安心。">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>DataSuite - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="i18n-loading bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-teal-500/30">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-2 min-h-[90px] border border-dashed border-[#313244] rounded-lg items-center text-xs text-[#585b70]">
+        Advertisement
+    </div>
+
+    <!-- Header -->
+    <header
+        class="bg-[#181825] border-b border-[#313244] min-h-[56px] h-auto py-2 flex flex-wrap gap-2 justify-between items-center px-4 shrink-0 shadow-sm z-10">
+        <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 bg-teal-500 rounded bg-opacity-20 flex items-center justify-center">
+                <span class="text-teal-400 font-bold text-xs">DS</span>
+            </div>
+            <div>
+                <h1 class="font-bold text-gray-200 text-sm tracking-wide">DataSuite</h1>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+            <!-- Language Switcher -->
+            <div class="flex bg-[#11111b] rounded-md p-0.5 border border-[#313244] text-[9px] font-bold uppercase">
+                <button id="lang-en" class="px-2 py-0.5 rounded transition-colors hover:text-white">EN</button>
+                <button id="lang-jp" class="px-2 py-0.5 rounded transition-colors hover:text-white">JP</button>
+            </div>
+            <div class="flex space-x-2">
+                <button id="btn-validate"
+                    class="flex items-center space-x-1.5 bg-teal-600/20 hover:bg-teal-600/30 text-teal-400 hover:text-teal-300 px-3 py-1.5 rounded-md text-xs font-bold transition-all border border-teal-500/30">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span data-i18n="validate">Validate</span>
+                </button>
+                <div class="hidden sm:block h-6 w-px bg-[#313244] mx-1"></div>
+                <div class="flex gap-1">
+                    <button id="btn-to-csv"
+                        class="bg-[#313244] hover:bg-[#45475a] text-gray-300 px-3 py-1.5 rounded-md text-xs font-medium transition-colors"
+                        data-i18n="convert_csv">
+                        JSON→CSV
+                    </button>
+                    <button id="btn-to-json"
+                        class="bg-[#313244] hover:bg-[#45475a] text-gray-300 px-3 py-1.5 rounded-md text-xs font-medium transition-colors"
+                        data-i18n="convert_json">
+                        CSV→JSON
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow flex flex-col md:flex-row overflow-hidden">
+
+        <!-- Input Pane -->
+        <div
+            class="w-full md:w-1/2 h-1/2 md:h-full flex flex-col border-b md:border-b-0 md:border-r border-[#313244] relative group">
+            <div class="bg-[#1e1e2e] border-b border-[#313244] px-4 py-2 flex justify-between items-center">
+                <span class="text-[10px] font-bold text-[#6c7086] uppercase tracking-wider" data-i18n="input_pane">入力ソース
+                    (Input)</span>
+                <span id="input-status" class="text-[10px] bg-[#313244] px-2 py-0.5 rounded text-[#a6adc8]"
+                    data-i18n="input_status_ready">準備完了</span>
+            </div>
+
+            <textarea id="editor-input"
+                class="flex-grow bg-[#1e1e2e] text-[#a6adc8] font-mono p-4 text-xs leading-relaxed focus:outline-none resize-none selection:bg-[#45475a]"
+                data-i18n="[placeholder]input_placeholder" spellcheck="false"></textarea>
+
+            <!-- Floating Helper -->
+            <div
+                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                <span class="text-[10px] text-[#6c7086]" data-i18n="paste_hint">Ctrl + V で貼り付け</span>
+            </div>
+        </div>
+
+        <!-- Output Pane -->
+        <div class="w-full md:w-1/2 h-1/2 md:h-full flex flex-col bg-[#181825]">
+            <div class="bg-[#181825] border-b border-[#313244] px-4 py-2 flex justify-between items-center">
+                <span class="text-[10px] font-bold text-[#6c7086] uppercase tracking-wider" data-i18n="output_pane">変換結果
+                    (Output)</span>
+                <button id="btn-copy"
+                    class="text-[10px] text-teal-400 hover:text-white flex items-center space-x-1 transition-colors">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span data-i18n="copy">Copy</span>
+                </button>
+            </div>
+
+            <textarea id="editor-output" data-i18n="[placeholder]output_placeholder"
+                class="w-full h-full bg-gray-900 text-gray-100 p-4 font-mono text-sm focus:outline-none resize-none border-t border-gray-700 sm:border-t-0 sm:border-l"
+                placeholder="// 変換または検証結果がここに表示されます" readonly></textarea>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="bg-[#11111b] border-t border-[#313244] px-3 py-1 flex justify-between items-center text-[10px] text-[#585b70] shrink-0">
+        <span id="status-msg" class="truncate max-w-md" data-i18n="status_idle">待機中</span>
+        <div class="flex items-center space-x-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+            <span data-i18n="secure_mode">セキュアモード: 完全ローカル処理</span>
+        </div>
+    </footer>
+
+    </footer>
+
+    <!-- SEO Documentation Anchor -->
+    <div id="seo-docs-anchor"></div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

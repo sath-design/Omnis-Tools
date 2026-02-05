@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://*.googleapis.com https://*.firebaseio.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <title>Contact Us - Omnis</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 font-sans antialiased min-h-screen">
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-gray-900 to-purple-900/10"></div>
+    </div>
+
+    <nav class="relative z-10 border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo_white.png" alt="Omnis" class="h-6 w-auto">
+            </a>
+            <div
+                class="flex bg-gray-800 rounded-md p-1 border border-gray-700 text-[10px] font-bold uppercase tracking-widest ring-1 ring-white/10">
+                <button id="lang-en" class="px-3 py-1 rounded transition-all hover:text-white">EN</button>
+                <button id="lang-jp" class="px-3 py-1 rounded transition-all hover:text-white">JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-2xl mx-auto px-6 py-20">
+        <h1 class="text-4xl font-extrabold text-white mb-2 text-center" data-i18n="contact_title">Get in Touch</h1>
+        <p class="text-gray-400 text-center mb-12" data-i18n="contact_subtitle">We are here to help. Send us a message
+            and we'll get back to you
+            soon.</p>
+
+        <form class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 ring-1 ring-white/5 space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2" data-i18n="full_name_label">Full
+                    Name</label>
+                <input type="text" data-i18n="[placeholder]contact_placeholder_name"
+                    class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="John Doe">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2" data-i18n="email_address_label">Email
+                    Address</label>
+                <input type="email" data-i18n="[placeholder]contact_placeholder_email"
+                    class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="john@example.com">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2" data-i18n="subject_label">Subject</label>
+                <select
+                    class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                    <option data-i18n="opt_general">General Inquiry</option>
+                    <option data-i18n="opt_support">Technical Support</option>
+                    <option data-i18n="opt_partnership">Partnership</option>
+                    <option data-i18n="opt_feedback">Feedback</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-2" data-i18n="message_label">Message</label>
+                <textarea rows="5" data-i18n="[placeholder]contact_placeholder_msg"
+                    class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    placeholder="How can we help you?"></textarea>
+            </div>
+            <button type="submit" data-i18n="send_message_button"
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-lg shadow-lg shadow-blue-900/40 transition-all">
+                Send Message
+            </button>
+        </form>
+
+        <!-- Contact info hidden as per user request -->
+        <div class="mt-12 text-center text-sm text-gray-500 hidden">
+            <p><span data-i18n="direct_email_hint">Or email us directly at:</span> <a href="mailto:info@ariesplus.com"
+                    class="text-blue-400 hover:underline">info@ariesplus.com</a></p>
+        </div>
+    </main>
+
+    <footer class="relative z-10 border-t border-gray-800 py-12 text-center text-xs text-gray-600">
+        <p data-i18n="copyright">&copy; 2026 Omnis. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { initI18n } from '../Shared/i18n.js';
+        document.addEventListener('DOMContentLoaded', () => initI18n('legal'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="RegexSandbox - Structural analysis and verification for AI-generated regular expressions.">
+    <meta name="keywords" content="regex, regular expression, AST, structural analysis, AI verification">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/RegexSandbox/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/RegexSandbox/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/RegexSandbox/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/RegexSandbox/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/RegexSandbox/">
+    <meta property="og:title" content="Regex Sandbox - Omnis">
+    <meta property="og:description" content="複雑な正規表現もAIが解説。リアルタイムプレビューで効率的なパターン作成をサポート。">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>Regex Sandbox - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans antialiased">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-4 min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <header class="flex-shrink-0 bg-gray-800 border-b border-gray-700 h-16 flex items-center px-6 justify-between">
+        <div class="flex items-center space-x-3">
+            <div
+                class="w-8 h-8 rounded bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center font-bold text-white tracking-tighter">
+                RE</div>
+            <h1 class="text-xl font-bold tracking-tight text-white">AI-Generated Regex Sandbox</h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Language Switcher -->
+            <div
+                class="flex bg-gray-900 rounded-md p-0.5 border border-gray-700 text-[10px] font-bold uppercase tracking-tight">
+                <button id="lang-en" class="px-2 py-1 rounded transition-colors hover:text-white">EN</button>
+                <button id="lang-jp" class="px-2 py-1 rounded transition-colors hover:text-white">JP</button>
+            </div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest font-bold hidden sm:block">Client-Side Logic
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col p-4 max-w-[1600px] mx-auto w-full space-y-4 h-[calc(100vh-180px)]">
+
+        <!-- Top: Regex Input -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700 shadow-sm flex-shrink-0">
+            <label class="text-xs font-bold text-gray-400 uppercase mb-2 block" data-i18n="pattern_label">Regex
+                Pattern</label>
+            <div class="flex items-center space-x-2">
+                <span class="text-gray-500 font-mono text-lg">/</span>
+                <input type="text" id="regex-input"
+                    class="flex-grow bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 font-mono text-lg text-purple-300 focus:outline-none focus:border-purple-500 transition-colors"
+                    placeholder="^\d{3}-\d{4}$" value="">
+                <span class="text-gray-500 font-mono text-lg">/</span>
+                <input type="text" id="flags-input"
+                    class="w-16 bg-gray-900 border border-gray-700 rounded-lg px-2 py-3 font-mono text-lg text-gray-400 focus:outline-none focus:border-purple-500 transition-colors"
+                    placeholder="gim" value="gm">
+            </div>
+            <div id="error-message" class="text-red-400 text-xs mt-2 font-mono hidden" data-i18n="error_invalid">Invalid
+                Regex</div>
+        </div>
+
+        <!-- Bottom: Split View -->
+        <div class="flex-grow grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-0">
+
+            <!-- Left: Test Cases -->
+            <div class="flex flex-col bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-gray-900/50 px-4 py-3 border-b border-gray-700 flex justify-between items-center">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase" data-i18n="test_cases_label">Test Strings</h3>
+                    <div class="flex space-x-2">
+                        <span class="text-xs bg-green-900/50 text-green-400 px-2 py-1 rounded" id="match-count"
+                            data-i18n="match_count" data-i18n-options='{"count":0}'>0 matches</span>
+                    </div>
+                </div>
+                <!-- Editor Area -->
+                <div class="flex-grow relative bg-gray-900 font-mono text-sm group">
+                    <!-- Highlighting Layer -->
+                    <div id="highlight-layer"
+                        class="absolute inset-0 p-4 whitespace-pre-wrap break-all text-gray-300 pointer-events-none z-10 leading-relaxed font-mono">
+                    </div>
+                    <!-- Input Layer -->
+                    <textarea id="test-input"
+                        class="absolute inset-0 w-full h-full bg-transparent p-4 text-transparent caret-white border-none resize-none focus:outline-none z-20 leading-relaxed font-mono whitespace-pre-wrap break-all"
+                        spellcheck="false" data-i18n="[placeholder]input_placeholder"></textarea>
+                </div>
+                <div class="bg-gray-900/50 px-4 py-2 border-t border-gray-700 text-[10px] text-gray-500"
+                    data-i18n="hint_multiple">
+                    You can add multiple test cases with newlines. Matches are highlighted in real-time.
+                </div>
+            </div>
+
+            <!-- Right: Visualization / Explanation -->
+            <div class="flex flex-col bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+                <div class="bg-gray-900/50 px-4 py-3 border-b border-gray-700">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase" data-i18n="viz_label">Structure & Explanation
+                    </h3>
+                </div>
+                <div class="flex-grow overflow-y-auto p-4 bg-gray-800" id="visualizer">
+                    <div class="text-center text-gray-500 py-12" data-i18n="viz_placeholder">
+                        Structure will appear here once a valid regex is entered.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Ad -->
+    <div id="raptive-footer-slot" style="display: none !important"
+        class="ad-skeleton mt-auto mb-6 mx-auto w-full max-w-4xl min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center justify-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <!-- SEO Documentation Anchor -->
+    <div id="seo-docs-anchor"></div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

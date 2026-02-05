@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="PdfUtility - High-performance tool for merging and reordering PDF files securely in your browser.">
+    <meta name="keywords" content="PDF merge, PDF reorder, PDF utility, client-side PDF, browser PDF tool">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/PdfUtility/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/PdfUtility/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/PdfUtility/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/PdfUtility/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/PdfUtility/">
+    <meta property="og:title" content="PDF Utility - Omnis">
+    <meta property="og:description" content="アップロード不要。機密文書も安心のローカルPDF編集ツール。">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>PDF Utility - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 min-h-screen font-sans antialiased selection:bg-indigo-500/30">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-4 min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <header class="flex-shrink-0 bg-gray-800 border-b border-gray-700 h-16 flex items-center px-6 justify-between">
+        <div class="flex items-center space-x-3">
+            <div
+                class="w-8 h-8 rounded bg-gradient-to-tr from-indigo-500 to-blue-500 flex items-center justify-center font-bold text-white tracking-tighter">
+                PDF</div>
+            <h1 class="text-xl font-bold tracking-tight text-white">PDF Utility</h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Language Switcher -->
+            <div
+                class="flex bg-gray-900 rounded-md p-0.5 border border-gray-700 text-[10px] font-bold uppercase tracking-tight">
+                <button id="lang-en" class="px-2 py-1 rounded transition-colors hover:text-white">EN</button>
+                <button id="lang-jp" class="px-2 py-1 rounded transition-colors hover:text-white">JP</button>
+            </div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest font-bold hidden sm:block">Client-Side Logic
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col p-6 max-w-6xl mx-auto w-full space-y-8">
+
+        <!-- Action Toolbar -->
+        <div class="flex flex-col items-center space-y-4">
+            <div class="flex justify-center space-x-4 bg-gray-800 p-1 rounded-xl shadow-lg border border-gray-700">
+                <button
+                    class="px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2 bg-indigo-600 text-white shadow"
+                    id="tab-merge" data-i18n="tab_merge">
+                    Merge
+                </button>
+                <button
+                    class="px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2 text-gray-400 hover:text-white"
+                    id="tab-split" data-i18n="tab_split">
+                    Split
+                </button>
+                <button
+                    class="px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2 text-gray-400 hover:text-white"
+                    id="tab-unlock" data-i18n="tab_unlock">
+                    Unlock
+                </button>
+            </div>
+
+            <!-- Options Panel -->
+            <div id="options-panel"
+                class="w-full max-w-2xl bg-gray-800/50 border border-gray-700 rounded-lg p-4 hidden">
+                <!-- Split Options -->
+                <div id="opts-split" class="hidden space-y-3">
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="split-mode" value="all" checked
+                                class="text-indigo-500 focus:ring-indigo-500 bg-gray-900 border-gray-600">
+                            <span class="text-sm text-gray-300" data-i18n="split_all">Split all pages (ZIP)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="split-mode" value="extract"
+                                class="text-indigo-500 focus:ring-indigo-500 bg-gray-900 border-gray-600">
+                            <span class="text-sm text-gray-300" data-i18n="split_extract">Extract pages (PDF)</span>
+                        </label>
+                    </div>
+                    <div id="extract-input-group" class="hidden">
+                        <label class="text-xs text-gray-500 uppercase font-bold block mb-1" data-i18n="range_label">Page
+                            range (e.g. 1, 3-5)</label>
+                        <input type="text" id="split-range" data-i18n="[placeholder]range_label"
+                            class="w-full bg-gray-900 border border-gray-600 rounded px-3 py-2 text-white text-sm focus:border-indigo-500 focus:outline-none placeholder-gray-600">
+                    </div>
+                </div>
+                <!-- Unlock Options -->
+                <div id="opts-unlock" class="hidden">
+                    <label class="text-xs text-gray-500 uppercase font-bold block mb-1"
+                        data-i18n="password_label">Password</label>
+                    <input type="password" id="unlock-password" data-i18n="[placeholder]password_placeholder"
+                        class="w-full bg-gray-900 border border-gray-600 rounded px-3 py-2 text-white text-sm focus:border-indigo-500 focus:outline-none placeholder-gray-600">
+                </div>
+            </div>
+
+            <div class="protection-zone">
+                <button id="btn-execute"
+                    class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-lg shadow-lg font-bold transition-all w-48"
+                    data-i18n="execute">
+                    Execute
+                </button>
+            </div>
+        </div>
+
+        <!-- Drop Zone -->
+        <div id="drop-zone"
+            class="border-2 border-dashed border-gray-700 bg-gray-800/30 rounded-2xl p-12 text-center transition-all duration-300 hover:border-indigo-500 hover:bg-gray-800/50 cursor-pointer">
+            <div class="pointer-events-none">
+                <svg class="w-16 h-16 mx-auto text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+                <h3 class="text-xl font-bold text-gray-300" data-i18n="drop_zone_all">Drop PDF files</h3>
+                <p class="text-gray-500 mt-2" data-i18n="drop_hint">or click to select</p>
+            </div>
+            <input type="file" id="file-input" class="hidden" accept="application/pdf" multiple>
+        </div>
+
+        <!-- File List (Sortable) -->
+        <div id="file-list" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <!-- Items will be injected here -->
+        </div>
+
+    </main>
+
+    <!-- Footer Ad -->
+    <div id="raptive-footer-slot" style="display: none !important"
+        class="ad-skeleton mt-auto mb-6 mx-auto w-full max-w-4xl min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center justify-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <!-- SEO Documentation Anchor -->
+    <div id="seo-docs-anchor"></div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

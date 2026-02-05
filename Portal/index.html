@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://*.googleapis.com https://*.firebaseio.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="Omnis Tools - クリエイターとビジネスパーソンのための高機能Webツールスイート。TaxEngine, VideoWorkbench, PDF Utilityなど、ブラウザ完結で安全なツールを提供します。">
+    <meta name="keywords" content="Omnis, Webツール, 税金計算, 動画変換, PDF編集, 画像最適化, 正規表現, コード整形">
+    <meta name="author" content="Omnis">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/">
+    <meta property="og:title" content="Omnis Tools - プロフェッショナルのためのWebツール">
+    <meta property="og:description" content="ブラウザ完結、インストール不要。高機能かつセキュアなWebツール群。">
+    <meta property="og:image" content="https://omnis-tools.com/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Omnis Tools">
+    <meta name="twitter:description" content="ブラウザ完結、インストール不要。高機能かつセキュアなWebツール群。">
+    <meta name="twitter:image" content="https://omnis-tools.com/assets/images/logo.png">
+    <title>Omnis - Web Tool Suite</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 font-sans antialiased min-h-screen flex flex-col relative">
+
+    <!-- Fixed Background -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-gray-900 to-purple-900/20"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden py-24 sm:py-32 z-10">
+        <div class="relative mx-auto max-w-7xl px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-2">
+                <img src="assets/images/logo_white.png" alt="Omnis" class="h-16 sm:h-24 w-auto">
+            </div>
+            <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl mx-auto" data-i18n="portal_tagline">
+                High-performance Web Tool Suite for Creators and Professionals.
+            </p>
+
+            <div class="mt-8 flex justify-center items-center gap-4">
+                <div
+                    class="flex bg-gray-800 rounded-md p-1 border border-gray-700 text-xs font-bold uppercase tracking-widest ring-1 ring-white/10">
+                    <button id="lang-en"
+                        class="px-4 py-1.5 rounded transition-all hover:text-white hover:bg-gray-700">EN</button>
+                    <button id="lang-jp"
+                        class="px-4 py-1.5 rounded transition-all hover:text-white hover:bg-gray-700">JP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tools Grid -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 lg:px-8 pb-24 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- TaxEngine Card -->
+            <a href="/Tools/TaxEngine/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-900/50 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="tax_engine_title">TaxEngine</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="tax_engine_desc">
+                        Instant Tax Calculator for Freelancers & Small Business Owners.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="tax_feature_1">Supports tax systems for JP, US, and UK</li>
+                        <li data-i18n="tax_feature_2">Simulate Invoice System and special tax rules</li>
+                        <li data-i18n="tax_feature_3">Secure client-side calculations</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-blue-400 group-hover:text-blue-300" data-i18n="open_tool">Open
+                        Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-blue-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- VideoWorkbench Card -->
+            <a href="/Tools/VideoWorkbench/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900/50 text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="video_workbench_title">VideoWorkbench</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="video_workbench_desc">
+                        High-speed client-side video conversion and compression.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="video_feature_1">No server upload required</li>
+                        <li data-i18n="video_feature_2">FHD/HD/SD resolution scaling</li>
+                        <li data-i18n="video_feature_3">Easy drag & drop interface</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-purple-400 group-hover:text-purple-300"
+                        data-i18n="open_tool">Open Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-purple-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- DataSuite Card -->
+            <a href="/Tools/DataSuite/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-teal-500 hover:shadow-2xl hover:shadow-teal-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-teal-900/50 text-teal-400 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="data_suite_title">DataSuite</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="data_suite_desc">
+                        Universal validator and converter for JSON/CSV data.
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="data_feature_1">JSON/CSV bidirectional conversion</li>
+                        <li data-i18n="data_feature_2">Real-time syntax validation</li>
+                        <li data-i18n="data_feature_3">VS Code-style editor experience</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-teal-400 group-hover:text-teal-300" data-i18n="open_tool">Open
+                        Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-teal-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- PdfUtility Card -->
+            <a href="/Tools/PdfUtility/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-900/50 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="pdf_utility_title">PDF Utility</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="pdf_utility_desc">
+                        事務作業の不便を解消する高機能PDFツール。
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="pdf_feature_1">Intuitive merge & reorder via D&D</li>
+                        <li data-i18n="pdf_feature_2">Secure client-side processing</li>
+                        <li data-i18n="pdf_feature_3">Zero-freeze asynchronous architecture</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-indigo-400 group-hover:text-indigo-300"
+                        data-i18n="open_tool">Open Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-indigo-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Privacy Scrubber Card -->
+            <a href="/Tools/PrivacyScrubber/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-green-500 hover:shadow-2xl hover:shadow-green-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-green-900/50 text-green-400 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="privacy_scrubber_title">Privacy Scrubber
+                    </h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="privacy_scrubber_desc">
+                        個人情報・メタデータを即座に削除するセキュリティツール。
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="privacy_feature_1">Remove GPS and device metadata from photos</li>
+                        <li data-i18n="privacy_feature_2">Automatic text scrubbing (Email/Phone)</li>
+                        <li data-i18n="privacy_feature_3">100% In-browser processing</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-green-400 group-hover:text-green-300"
+                        data-i18n="open_tool">Open Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-green-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Image Optimizer Card -->
+            <a href="/Tools/ImageOptimizer/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-pink-500 hover:shadow-2xl hover:shadow-pink-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-pink-900/50 text-pink-400 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="image_optimizer_title">WebP/SVG Optimizer
+                    </h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="image_optimizer_desc">
+                        WebP変換とSVG軽量化を同時に行う高速ツール。
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="image_feature_1">Fast WebP conversion from PNG/JPG</li>
+                        <li data-i18n="image_feature_2">SVG tag optimization and minification</li>
+                        <li data-i18n="image_feature_3">Multi-threaded batch processing</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-pink-400 group-hover:text-pink-300" data-i18n="open_tool">Open
+                        Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-pink-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Regex Sandbox Card -->
+            <a href="/Tools/RegexSandbox/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900/50 text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="regex_sandbox_title">Regex Sandbox</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="regex_sandbox_desc">
+                        AI生成正規表現の構造解析・検証ツール。
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="regex_feature_1">AST-based regex structural decomposition</li>
+                        <li data-i18n="regex_feature_2">Real-time highlighted validation</li>
+                        <li data-i18n="regex_feature_3">Don't trust AI, verify here</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-purple-400 group-hover:text-purple-300"
+                        data-i18n="open_tool">Open Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-purple-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Code Polisher Card -->
+            <a href="/Tools/CodePolisher/"
+                class="group relative flex flex-col overflow-hidden rounded-2xl bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-cyan-500 hover:shadow-2xl hover:shadow-cyan-900/20 hover:-translate-y-1">
+                <div class="p-8 flex-grow">
+                    <div
+                        class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-900/50 text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-i18n="code_polisher_title">Code Polisher</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4" data-i18n="code_polisher_desc">
+                        プライバシー重視のコード整形・機密保護ツール。
+                    </p>
+                    <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside">
+                        <li data-i18n="code_feature_1">Complete local formatting (Zero upload)</li>
+                        <li data-i18n="code_feature_2">Supports JS/HTML/CSS/SQL</li>
+                        <li data-i18n="code_feature_3">Auto-detection of secrets (Tokens/Keys)</li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-gray-750 px-8 py-4 border-t border-gray-700 flex items-center justify-between group-hover:bg-gray-700 transition-colors">
+                    <span class="text-sm font-medium text-cyan-400 group-hover:text-cyan-300" data-i18n="open_tool">Open
+                        Tool</span>
+                    <svg class="h-5 w-5 text-gray-500 group-hover:text-cyan-300 transition-colors" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-16 bg-gray-900/80 text-center relative z-10 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 text-left">
+            <div class="col-span-2">
+                <img src="assets/images/logo_white.png" alt="Omnis" class="h-8 w-auto mb-4">
+                <p class="text-sm text-gray-500 max-w-xs" data-i18n="portal_tagline">High-performance Web Tool Suite for
+                    Creators and Professionals.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4" data-i18n="trust_legal_title">Trust & Legal</h4>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li><a href="about.html" class="hover:text-blue-400 transition-colors" data-i18n="about_us">About
+                            Us</a></li>
+                    <li><a href="contact.html" class="hover:text-blue-400 transition-colors"
+                            data-i18n="contact">Contact</a></li>
+                    <li><a href="privacy.html" class="hover:text-blue-400 transition-colors"
+                            data-i18n="privacy_policy">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-blue-400 transition-colors"
+                            data-i18n="terms_of_service">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4" data-i18n="admin_title">Admin</h4>
+                <ul class="text-sm text-gray-500 space-y-2">
+                    <li><a href="dashboard.html" class="hover:text-white transition-colors"
+                            data-i18n="management_portal">Management Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+            <p class="text-xs text-gray-600" data-i18n="copyright">&copy; 2026 Omnis. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="src/index.js"></script>
+</body>
+
+</html>

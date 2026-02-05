@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; media-src 'self' blob:; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="VideoWorkbench - Secure, client-side video conversion and compression in your browser.">
+    <meta name="keywords" content="video converter, video compression, local processing, WebCodecs, MP4, WebM">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/VideoWorkbench/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/VideoWorkbench/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/VideoWorkbench/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/VideoWorkbench/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/VideoWorkbench/">
+    <meta property="og:title" content="VideoWorkbench - Omnis">
+    <meta property="og:description"
+        content="High-speed video conversion without uploads. Secure and private processing using WebCodecs.">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>VideoWorkbench - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans antialiased">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-4 min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <!-- Navbar -->
+    <header class="flex-shrink-0 bg-gray-800 border-b border-gray-700 h-16 flex items-center px-6 justify-between">
+        <div class="flex items-center space-x-3">
+            <div
+                class="w-8 h-8 rounded bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center font-bold text-white">
+                V</div>
+            <h1 class="text-xl font-bold tracking-tight text-white">VideoWorkbench</h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Language Switcher -->
+            <div
+                class="flex bg-gray-900 rounded-md p-0.5 border border-gray-700 text-[10px] font-bold uppercase tracking-tight">
+                <button id="lang-en" class="px-2 py-1 rounded transition-colors hover:text-white">EN</button>
+                <button id="lang-jp" class="px-2 py-1 rounded transition-colors hover:text-white">JP</button>
+            </div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest font-bold hidden sm:block">Client-Side Logic
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-6 relative">
+        <!-- Background Decor -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-3xl">
+            </div>
+        </div>
+
+        <div class="relative w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+            <!-- Left: Drop Zone -->
+            <div class="space-y-6">
+                <h2 class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-300"
+                    data-i18n="video_workbench_title">
+                    VideoWorkbench
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed" data-i18n="video_workbench_tagline">
+                    High-speed client-side video conversion and compression.
+                </p>
+
+                <div id="drop-zone"
+                    class="group relative border-2 border-dashed border-gray-700 bg-gray-800/50 hover:bg-gray-800 hover:border-purple-500 rounded-2xl p-10 text-center transition-all duration-300 cursor-pointer animate-fade-in hover-lift">
+                    <div class="space-y-4 pointer-events-none">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-700 rounded-full flex items-center justify-center text-gray-400 group-hover:text-purple-400 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-bold text-gray-200" data-i18n="drop_zone_text">Drag and drop video
+                                here</p>
+                            <p class="text-sm text-gray-500 mt-1">or click to select</p>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        accept="video/*">
+                </div>
+            </div>
+
+            <!-- Right: Settings & Status -->
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 shadow-2xl">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between border-b border-gray-700 pb-4 mb-4">
+                        <h3 class="font-bold text-gray-300" data-i18n="settings">Settings</h3>
+                        <span class="text-xs text-purple-400 font-mono bg-purple-900/30 px-2 py-1 rounded">WebCodecs
+                            API</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2"
+                                data-i18n="resolution">Resolution</label>
+                            <select id="opt-resolution"
+                                class="block w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none">
+                                <option value="1080" data-i18n="1080p (FHD)">1080p (FHD)</option>
+                                <option value="720" data-i18n="720p (HD)">720p (HD)</option>
+                                <option value="480" data-i18n="480p (SD)">480p (SD)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-2"
+                                data-i18n="quality">Quality Mode</label>
+                            <select id="opt-quality"
+                                class="block w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none">
+                                <option value="high" data-i18n="quality_high">High</option>
+                                <option value="medium" data-i18n="quality_balanced" selected>Balanced</option>
+                                <option value="low" data-i18n="quality_min">Min Size</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Progress (Hidden) -->
+                    <div id="progress-container" class="hidden space-y-2 animate-fade-in">
+                        <div class="flex justify-between text-xs text-gray-400 font-mono">
+                            <span class="animate-pulse">PROCESSING...</span>
+                            <span id="progress-text">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-900 rounded-full h-2 overflow-hidden">
+                            <div id="progress-bar"
+                                class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full transition-all duration-300"
+                                style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Result (Hidden) -->
+                    <div id="result-container"
+                        class="hidden bg-green-900/20 border border-green-500/30 rounded-lg p-6 text-center animate-slide-up">
+                        <div class="text-green-400 font-bold text-lg mb-1" data-i18n="status_done">Processing Complete
+                        </div>
+                        <p class="text-green-200/70 text-sm mb-4" id="reduction-msg">ファイルサイズを 約60% 削減</p>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <button id="btn-reset"
+                                class="px-4 py-2 border border-gray-600 rounded-lg text-sm text-gray-300 hover:bg-gray-700 transition"
+                                data-i18n="reset">Reset</button>
+                            <a id="btn-download" href="#"
+                                class="px-4 py-2 bg-white text-gray-900 font-bold rounded-lg text-sm hover:bg-gray-100 transition shadow-lg flex items-center justify-center"
+                                data-i18n="download">
+                                Save Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEO Documentation Anchor -->
+    <div id="seo-docs-anchor"></div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

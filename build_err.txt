@@ -1,0 +1,22 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+[31mx[39m Build failed in 774ms
+[31merror during build:
+[31m[vite:build-html] Unable to parse HTML; parse5 error code end-tag-without-matching-open-element
+ at D:/Omnis/Portal/dashboard.html:37:1
+38 |  
+39 |  <body
+40 |      class="bg-gray-900 text-gray-100 font-sans flex h-screen overflow-hidden selection:bg-blue-500/30 opacity-0 transition-opacity duration-300"
+   |                       ^^^^^^^
+41 |      id="body-content">
+42 |      <script type="module">[31m
+file: [36mD:/Omnis/Portal/dashboard.html[31m
+    at handleParseError (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:35172:9)
+    at Parser.onParseError (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:35097:7)
+    at Parser._err (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:4932:14)
+    at endTagAfterHead (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:6328:15)
+    at Parser._endTagOutsideForeignContent (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:5707:17)
+    at Parser.onEndTag (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:5681:18)
+    at Tokenizer.emitCurrentTagToken (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:1355:26)
+    at Tokenizer._stateTagName (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:2037:22)
+    at Tokenizer._callState (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:1542:22)
+    at Tokenizer._runParsingLoop (file:///D:/Omnis/node_modules/vite/dist/node/chunks/dep-D-7KCb9p.js:1179:22)[39m

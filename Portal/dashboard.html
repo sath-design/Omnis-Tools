@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://*.googleapis.com https://*.firebase.google.com https://*.firebaseio.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description" content="Omnis Management Portal - ダッシュボード">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Omnis Dashboard">
+    <meta property="og:description" content="Omnis 管理用ダッシュボード">
+    <title>Omnis Management Portal</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <!-- Tailwind CSS (via CDN for Proto) + Shared Style (Custom Config override) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .glass-panel {
+            background: rgba(31, 41, 55, 0.7);
+            /* gray-800 + opacity */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+
+<body
+    class="bg-gray-900 text-gray-100 font-sans flex h-screen overflow-hidden selection:bg-blue-500/30 opacity-0 transition-opacity duration-300"
+    id="body-content">
+    <script type="module">
+        import { auth, onAuthStateChanged, signOut } from './js/firebase-init.js';
+
+        const bodyContent = document.getElementById('body-content');
+
+        // Route Guard
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in.
+                console.log("Authenticated:", user.email);
+                bodyContent.classList.remove('opacity-0');
+            } else {
+                // No user is signed in. Redirect to login.
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Logout Global Handler
+        window.handleLogout = async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error("Logout error:", error);
+            }
+        };
+    </script>
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 border-r border-gray-700 flex flex-col">
+        <div class="p-6 border-b border-gray-700 flex items-center space-x-3">
+            <div
+                class="w-10 h-10 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-lg flex items-center justify-center font-bold text-xl shadow-lg">
+                O</div>
+            <span class="font-bold text-lg tracking-tight">OMNIS <span
+                    class="text-xs text-blue-400 block -mt-1 font-normal opacity-70">Overwatch</span></span>
+        </div>
+
+        <nav class="flex-grow p-4 space-y-2">
+            <button onclick="showSection('dashboard')" id="nav-dashboard"
+                class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-600/20 transition-all font-medium">
+                <i class="fas fa-chart-line w-5"></i>
+                <span>ダッシュボード</span>
+            </button>
+            <button onclick="showSection('ads')" id="nav-ads"
+                class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-all">
+                <i class="fas fa-ad w-5"></i>
+                <span>広告管理</span>
+            </button>
+            <button onclick="showSection('seo')" id="nav-seo"
+                class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-all">
+                <i class="fas fa-search w-5"></i>
+                <span>SEO設定</span>
+            </button>
+            <button onclick="showSection('health')" id="nav-health"
+                class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-all">
+                <i class="fas fa-heartbeat w-5"></i>
+                <span>ステータス</span>
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-gray-700">
+            <button onclick="handleLogout()"
+                class="w-full flex items-center space-x-3 px-4 py-2 text-gray-400 hover:text-red-400 transition-colors text-sm">
+                <i class="fas fa-sign-out-alt w-5"></i>
+                <span>ログアウト</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow overflow-y-auto">
+        <header
+            class="h-16 px-8 border-b border-gray-700 flex items-center justify-between bg-gray-900/50 backdrop-blur">
+            <h2 id="page-title" class="text-xl font-bold text-white">オーバーウォッチ ダッシュボード</h2>
+            <div class="flex items-center space-x-3">
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-900/30 text-green-400 border border-green-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                    正常
+                </span>
+                <button id="btn-deploy-global"
+                    class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg shadow-blue-900/20 transition-all">
+                    設定を同期
+                </button>
+            </div>
+        </header>
+
+        <div class="p-8 max-w-7xl mx-auto space-y-8">
+            <!-- DASHBOARD SECTION -->
+            <div id="dashboard-section" class="space-y-8">
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-panel p-6 rounded-xl space-y-2">
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Page Views</div>
+                        <div id="metric-pv" class="text-3xl font-bold text-white">--</div>
+                        <div class="text-xs text-green-400 flex items-center"><i
+                                class="fas fa-arrow-up mr-1 text-[10px]"></i> 12.5%</div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl space-y-2">
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Revenue (24h)</div>
+                        <div id="metric-revenue" class="text-3xl font-bold text-white">--</div>
+                        <div class="text-xs text-green-400 flex items-center"><i
+                                class="fas fa-arrow-up mr-1 text-[10px]"></i> 8.2%</div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl space-y-2">
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Avg. RPM</div>
+                        <div id="metric-rpm" class="text-3xl font-bold text-white">--</div>
+                        <div class="text-xs text-red-400 flex items-center"><i
+                                class="fas fa-arrow-down mr-1 text-[10px]"></i> 1.4%</div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl space-y-2">
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Critical Errors</div>
+                        <div id="metric-errors" class="text-3xl font-bold text-red-500">--</div>
+                        <div class="text-xs text-gray-500">Last 60 mins</div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2 glass-panel p-6 rounded-xl h-[400px]">
+                        <h3 class="text-sm font-bold text-gray-300 mb-6 uppercase tracking-widest">Traffic Overflow
+                            (24h)</h3>
+                        <div class="relative h-[300px]">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl">
+                        <h3 class="text-sm font-bold text-gray-300 mb-6 uppercase tracking-widest">Common Health Status
+                        </h3>
+                        <div class="space-y-6">
+                            <!-- Item -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-400">TaxEngine</span>
+                                    <span class="text-green-400 font-bold">0.8s</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-1.5">
+                                    <div class="bg-green-500 h-1.5 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-400">VideoWorkbench</span>
+                                    <span class="text-yellow-400 font-bold">1.8s</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-1.5">
+                                    <div class="bg-yellow-500 h-1.5 rounded-full" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-400">DataSuite</span>
+                                    <span class="text-green-400 font-bold">1.0s</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-1.5">
+                                    <div class="bg-green-500 h-1.5 rounded-full" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                            <div class="text-xs text-gray-400 mb-2">推奨事項</div>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                <span class="text-yellow-400">VideoWorkbench</span> の初期JSバンドルサイズが大きくなっています。Code
+                                Splittingの導入を検討してください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other sections (hidden placeholders) -->
+            <!-- ADS SECTION -->
+            <div id="ads-section" class="hidden space-y-6">
+                <!-- Ad Management Content Injected by JS -->
+            </div>
+            <div id="seo-section" class="hidden space-y-6">
+                <!-- SEO Management UI Injected by JS -->
+            </div>
+            <div id="health-section" class="hidden space-y-6">
+                <!-- Health Management UI Injected by JS -->
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="src/dashboard-view.js"></script>
+</body>
+
+</html>

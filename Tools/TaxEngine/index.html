@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="TaxEngine - Professional Tax Calculator for Freelancers & Small Business Owners (JP/US/UK).">
+    <meta name="keywords"
+        content="tax calculator, income tax, sales tax, VAT, consumption tax, invoice system simulator">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/TaxEngine/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/TaxEngine/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/TaxEngine/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/TaxEngine/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/TaxEngine/">
+    <meta property="og:title" content="TaxEngine - Omnis">
+    <meta property="og:description"
+        content="Instant tax calculations for freelancers. Secure, private, and 100% client-side.">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>TaxEngine - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="i18n-loading bg-gray-900 text-gray-100 min-h-screen p-4 md:p-8 font-sans antialiased">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-4 min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center text-xs text-gray-500">
+        <span class="relative z-10">Ad Advertisement</span>
+    </div>
+
+    <div id="app" class="max-w-5xl mx-auto animate-fade-in">
+
+        <header
+            class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between border-b border-gray-700 pb-4 relative">
+            <div class="w-full md:w-auto pr-24 md:pr-0">
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                    <span class="bg-blue-600 text-white p-1 rounded-md text-lg md:text-xl">Tax</span>
+                    Engine
+                </h1>
+                <p class="text-gray-400 mt-1 text-xs md:text-sm" data-i18n="tax_engine_tagline">Instant Tax Calculator
+                    for
+                    Freelancers (2026 Edition)</p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Country Tabs (Styled as pills) -->
+                <div class="flex space-x-1 bg-gray-800 p-1 rounded-lg border border-gray-700">
+                    <button
+                        class="country-tab px-4 py-1.5 rounded-md text-sm font-medium transition-all text-white bg-blue-600 shadow-sm"
+                        data-country="us" data-i18n="usa">USA</button>
+                    <button
+                        class="country-tab px-4 py-1.5 rounded-md text-sm font-medium text-gray-400 hover:text-white transition-all hover:bg-gray-700"
+                        data-country="uk" data-i18n="uk">UK</button>
+                    <button
+                        class="country-tab px-4 py-1.5 rounded-md text-sm font-medium text-gray-400 hover:text-white transition-all hover:bg-gray-700"
+                        data-country="jp" data-i18n="japan">Japan</button>
+                </div>
+
+                <!-- Language Switcher -->
+                <div
+                    class="absolute top-0 right-0 md:static flex bg-gray-800 rounded-md p-0.5 border border-gray-700 text-[10px] font-bold uppercase tracking-tight">
+                    <button id="lang-en" class="px-2 py-1 rounded transition-colors hover:text-white">EN</button>
+                    <button id="lang-jp" class="px-2 py-1 rounded transition-colors hover:text-white">JP</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left: Input Form -->
+            <div class="lg:col-span-8 space-y-6">
+                <div class="bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-6 space-y-6">
+                    <h2 class="text-lg font-bold flex items-center text-gray-200">
+                        <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <span data-i18n="data_input">Data Input</span>
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-1" id="label-sales"
+                                data-i18n="annual_sales">Annual Sales (Incl. Tax)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-3 text-gray-500" id="cur-symbol-sales">¥</span>
+                                <input type="number" id="input-sales"
+                                    class="block w-full pl-8 pr-3 py-2.5 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-mono text-lg"
+                                    placeholder="0">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-1" id="label-expenses"
+                                data-i18n="annual_expenses">Annual Expenses (Incl. Tax)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-3 text-gray-500" id="cur-symbol-expenses">¥</span>
+                                <input type="number" id="input-expenses"
+                                    class="block w-full pl-8 pr-3 py-2.5 bg-gray-900 border border-gray-600 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-mono text-lg"
+                                    placeholder="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JP Specific Options -->
+                    <div id="options-jp"
+                        class="country-options hidden bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input type="checkbox" id="check-invoice"
+                                class="w-5 h-5 text-blue-500 rounded border-gray-600 bg-gray-700 focus:ring-blue-500 focus:ring-offset-gray-900 transition duration-150 ease-in-out">
+                            <span class="font-bold text-blue-200 group-hover:text-blue-100 transition-colors"
+                                data-i18n="invoice_question">Are you a registered Invoice Business (Japan)?</span>
+                        </label>
+
+                        <div id="invoice-options" class="ml-8 mt-3 hidden animate-slide-up">
+                            <label class="flex items-center space-x-2 cursor-pointer">
+                                <input type="checkbox" id="check-2wari" checked
+                                    class="w-4 h-4 text-blue-500 rounded border-gray-600 bg-gray-700 focus:ring-blue-500 focus:ring-offset-gray-900">
+                                <span class="text-sm text-gray-300" data-i18n="apply_2wari">Apply 20% Special
+                                    Rule</span>
+                            </label>
+                            <p class="text-xs text-gray-500 mt-1 ml-6" data-i18n="apply_2wari_desc">Simplified
+                                calculation: Pay only 20% of sales tax.</p>
+                        </div>
+                    </div>
+
+                    <!-- US/UK Placeholders -->
+                    <div id="options-us"
+                        class="country-options bg-gray-700/50 p-4 rounded-lg text-sm text-gray-400 border border-gray-600 border-dashed"
+                        data-i18n="us_desc">
+                        Federal Income Tax & Self-Employment Tax (Single Filer) Calculation.
+                    </div>
+                    <div id="options-uk"
+                        class="country-options hidden bg-gray-700/50 p-4 rounded-lg text-sm text-gray-400 border border-gray-600 border-dashed"
+                        data-i18n="uk_desc">
+                        Income Tax & National Insurance (Class 4) Calculation.
+                    </div>
+
+                    <div class="pt-2 protection-zone">
+                        <button id="btn-calculate" data-i18n="calculate_tax"
+                            class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all transform hover:-translate-y-0.5">
+                            Calculate Tax
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Result -->
+            <div class="lg:col-span-4">
+                <div id="result-card"
+                    class="bg-gray-800 text-white rounded-xl shadow-2xl p-6 sticky top-6 border border-gray-700 ring-1 ring-white/5">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2"
+                        data-i18n="net_income_estimate">Net Income Estimate</h3>
+                    <div class="text-4xl font-mono font-bold text-green-400 mb-1 tracking-tight" id="val-net-income">-
+                    </div>
+                    <div class="text-xs text-gray-500 mb-6 flex justify-end" data-i18n="approximate_value">※ Approximate
+                        Value</div>
+
+                    <div class="space-y-4 border-t border-gray-700 pt-6">
+                        <div class="flex justify-between items-center group">
+                            <span class="text-sm text-gray-400 group-hover:text-blue-300 transition-colors"
+                                id="lbl-tax1" data-i18n="income_tax">Income Tax</span>
+                            <span id="val-income-tax" class="font-mono font-bold text-gray-200">-</span>
+                        </div>
+                        <div class="flex justify-between items-center group">
+                            <span class="text-sm text-gray-400 group-hover:text-blue-300 transition-colors"
+                                id="lbl-tax2" data-i18n="consumption_tax">Consumption Tax</span>
+                            <span id="val-consumption-tax" class="font-mono font-bold text-gray-200">-</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-700/50 mt-2">
+                            <span data-i18n="surtax_detail">Detail: Reconstruction Tax + Defense Fund</span>
+                            <span id="val-surtax" class="font-mono">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Ad -->
+                <div id="raptive-sidebar-slot" style="display: none !important"
+                    class="ad-skeleton mt-6 border border-dashed border-gray-700 h-[300px] flex items-center justify-center text-xs text-gray-500">
+                    Advertisement
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Ad -->
+        <div id="raptive-footer-slot" style="display: none !important"
+            class="ad-skeleton mt-12 min-h-[90px] border border-dashed border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-500">
+            Advertisement
+        </div>
+
+        <!-- SEO Documentation Anchor -->
+        <div id="seo-docs-anchor"></div>
+    </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

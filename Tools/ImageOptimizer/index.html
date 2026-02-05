@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://www.google-analytics.com https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://firestore.googleapis.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://analytics.google.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="description"
+        content="ImageOptimizer - High-speed WebP conversion and SVG tag minification in your browser.">
+    <meta name="keywords" content="image optimizer, WebP converter, SVG minifier, local processing, batch optimization">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omnis-tools.com/Tools/ImageOptimizer/">
+    <link rel="canonical" href="https://omnis-tools.com/Tools/ImageOptimizer/">
+    <link rel="alternate" hreflang="en" href="https://omnis-tools.com/Tools/ImageOptimizer/">
+    <link rel="alternate" hreflang="ja" href="https://omnis-tools.com/Tools/ImageOptimizer/?lng=ja">
+    <link rel="alternate" hreflang="x-default" href="https://omnis-tools.com/Tools/ImageOptimizer/">
+    <meta property="og:title" content="WebP/SVG Optimizer - Omnis">
+    <meta property="og:description" content="ドラッグ＆ドロップで画像を次世代フォーマットへ最適化。サイト高速化の必須ツール。">
+    <meta property="og:image" content="../../Portal/assets/images/logo.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <title>WebP/SVG Optimizer - Omnis</title>
+    <link rel="icon" type="image/png" href="../../Portal/assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="i18n-loading bg-gray-900 text-gray-100 h-screen flex flex-col font-sans antialiased selection:bg-pink-500/30">
+    <!-- Dynamic Ad (Header) -->
+    <div id="raptive-header-slot" style="display: none !important"
+        class="ad-skeleton hidden justify-center my-4 min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <header class="flex-shrink-0 bg-gray-800 border-b border-gray-700 h-16 flex items-center px-6 justify-between">
+        <div class="flex items-center space-x-3">
+            <div
+                class="w-8 h-8 rounded bg-gradient-to-tr from-pink-500 to-rose-500 flex items-center justify-center font-bold text-white tracking-tighter">
+                IMG</div>
+            <h1 class="text-xl font-bold tracking-tight text-white">WebP/SVG Optimizer</h1>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Language Switcher -->
+            <div
+                class="flex bg-gray-900 rounded-md p-0.5 border border-gray-700 text-[10px] font-bold uppercase tracking-tight">
+                <button id="lang-en" class="px-2 py-1 rounded transition-colors hover:text-white">EN</button>
+                <button id="lang-jp" class="px-2 py-1 rounded transition-colors hover:text-white">JP</button>
+            </div>
+            <div class="text-xs text-gray-500 uppercase tracking-widest font-bold hidden sm:block">Client-Side Logic
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col p-6 max-w-6xl mx-auto w-full space-y-6">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
+
+            <!-- Controls (Left) -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Drop Zone -->
+                <div id="drop-zone"
+                    class="border-2 border-dashed border-gray-700 bg-gray-800/30 rounded-2xl p-8 text-center transition-all duration-300 hover:border-pink-500 hover:bg-gray-800/50 cursor-pointer relative">
+                    <div class="pointer-events-none">
+                        <svg class="w-10 h-10 mx-auto text-gray-500 mb-3" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <p class="text-sm font-bold text-gray-300" data-i18n="drop_zone_text">Drop images here</p>
+                        <p class="text-xs text-gray-500 mt-1" data-i18n="webp_svg_hint">PNG, JPG → WebP | SVG →
+                            Optimized</p>
+                    </div>
+                    <input type="file" id="file-input" class="hidden" accept="image/png, image/jpeg, image/svg+xml"
+                        multiple>
+                </div>
+
+                <!-- Settings -->
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-sm">
+                    <h3 class="text-xs font-bold text-gray-400 uppercase mb-4" data-i18n="compression_settings">
+                        Compression Settings (WebP)</h3>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between mb-2">
+                            <label class="text-sm font-medium text-gray-300" data-i18n="quality">Quality</label>
+                            <span id="quality-val" class="text-sm font-mono text-pink-400">80%</span>
+                        </div>
+                        <input type="range" id="quality-range" min="10" max="100" value="80"
+                            class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-2">
+                            <label class="text-sm font-medium text-gray-300" data-i18n="max_width">Max Width</label>
+                            <span id="max-width-val" class="text-sm font-mono text-pink-400">1920px</span>
+                        </div>
+                        <select id="max-width-select"
+                            class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-300 focus:outline-none focus:border-pink-500">
+                            <option value="0" data-i18n="original">Original</option>
+                            <option value="3840">4K (3840px)</option>
+                            <option value="1920" selected>Full HD (1920px)</option>
+                            <option value="1280">HD (1280px)</option>
+                            <option value="800">Blog (800px)</option>
+                        </select>
+                    </div>
+
+                    <div class="protection-zone">
+                        <button id="btn-process"
+                            class="w-full bg-pink-600 hover:bg-pink-500 text-white font-bold py-3 rounded-lg shadow-lg shadow-pink-900/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            data-i18n="optimize_all">
+                            Optimize All
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List (Right) -->
+            <div
+                class="lg:col-span-2 bg-gray-800 rounded-2xl border border-gray-700 flex flex-col overflow-hidden max-h-[600px]">
+                <div class="bg-gray-900/50 px-6 py-4 border-b border-gray-700 flex justify-between items-center">
+                    <h3 class="text-sm font-bold text-gray-300" data-i18n="queue_title">Processing Queue</h3>
+                    <span id="queue-count" class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">0 files</span>
+                </div>
+
+                <div id="file-list" class="flex-grow overflow-y-auto p-4 space-y-3">
+                    <!-- Items -->
+                    <div class="text-center text-gray-500 py-12 hidden" id="empty-state" data-i18n="empty_state">
+                        No images selected.
+                    </div>
+                </div>
+
+                <div class="bg-gray-900/50 px-6 py-4 border-t border-gray-700 flex justify-between items-center">
+                    <div class="text-xs text-gray-400" id="total-saved-container">
+                        <span data-i18n="total_saved_label">Total Saved</span>: <span id="total-saved"
+                            class="text-green-400 font-bold">0 KB</span>
+                    </div>
+                    <div class="protection-zone">
+                        <button id="btn-download-all"
+                            class="text-xs font-bold text-pink-400 hover:text-white transition-colors disabled:opacity-50"
+                            disabled data-i18n="download_zip">Download All (ZIP)</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Ad -->
+    <div id="raptive-footer-slot" style="display: none !important"
+        class="ad-skeleton mt-auto mb-6 mx-auto w-full max-w-4xl min-h-[90px] border border-dashed border-gray-700 rounded-lg items-center justify-center text-xs text-gray-500">
+        Advertisement
+    </div>
+
+    <!-- SEO Documentation Anchor -->
+    <div id="seo-docs-anchor"></div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

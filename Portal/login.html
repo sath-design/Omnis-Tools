@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://*.googleapis.com https://*.firebaseio.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <title>Login - Omnis Portal</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 h-screen flex items-center justify-center font-sans antialiased">
+    <!-- Background Decor -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="absolute top-[20%] right-[20%] w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[20%] left-[20%] w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div
+        class="w-full max-w-md bg-gray-800/80 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-gray-700 relative z-10">
+        <div class="text-center mb-8">
+            <div
+                class="w-16 h-16 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-xl mx-auto flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">
+                O
+            </div>
+            <h1 class="text-2xl font-bold text-white">Omnis Portal</h1>
+            <p class="text-gray-400 text-sm mt-1">管理者ログイン</p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label for="email" class="block text-xs font-medium text-gray-400 uppercase mb-2">Email</label>
+                <div class="relative">
+                    <span class="absolute left-3 top-3 text-gray-500"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="email" required
+                        class="w-full bg-gray-900/50 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        placeholder="admin@omnis.com">
+                </div>
+            </div>
+
+            <div>
+                <label for="password" class="block text-xs font-medium text-gray-400 uppercase mb-2">Password</label>
+                <div class="relative">
+                    <span class="absolute left-3 top-3 text-gray-500"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="password" required
+                        class="w-full bg-gray-900/50 border border-gray-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        placeholder="••••••••">
+                </div>
+            </div>
+
+            <div id="error-msg"
+                class="hidden text-red-400 text-sm text-center bg-red-900/20 py-2 rounded border border-red-900/50">
+            </div>
+
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+                ログイン
+            </button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { auth, signInWithEmailAndPassword } from './js/firebase-init.js';
+
+        const loginForm = document.getElementById('login-form');
+        const errorMsg = document.getElementById('error-msg');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btn = e.target.querySelector('button');
+
+            try {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 認証中...';
+                errorMsg.classList.add('hidden');
+
+                await signInWithEmailAndPassword(auth, email, password);
+
+                // Success: Redirect to Dashboard
+                window.location.href = 'dashboard.html';
+
+            } catch (error) {
+                console.error(error);
+                btn.disabled = false;
+                btn.textContent = 'ログイン';
+                errorMsg.textContent = 'ログインに失敗しました。メールアドレスまたはパスワードを確認してください。';
+                errorMsg.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>

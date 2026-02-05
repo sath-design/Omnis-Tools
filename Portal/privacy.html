@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.gstatic.com https://pagead2.googlesyndication.com https://adservice.google.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://pagead2.googlesyndication.com; font-src 'self' https://cdnjs.cloudflare.com; worker-src 'self' blob:; connect-src 'self' https://www.gstatic.com https://*.googleapis.com https://*.firebaseio.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com;">
+    <title>Privacy Policy - Omnis</title>
+    <link rel="icon" type="image/png" href="assets/images/symbol_white.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google AdSense (Ownership Verification) -->
+    <script id="scr-google-adsense" async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4443809916748748"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100 font-sans antialiased min-h-screen">
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-gray-900 to-purple-900/10"></div>
+    </div>
+
+    <nav class="relative z-10 border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo_white.png" alt="Omnis" class="h-6 w-auto">
+            </a>
+            <div
+                class="flex bg-gray-800 rounded-md p-1 border border-gray-700 text-[10px] font-bold uppercase tracking-widest ring-1 ring-white/10">
+                <button id="lang-en" class="px-3 py-1 rounded transition-all hover:text-white">EN</button>
+                <button id="lang-jp" class="px-3 py-1 rounded transition-all hover:text-white">JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-4xl mx-auto px-6 py-20">
+        <h1 class="text-4xl font-extrabold text-white mb-8" data-i18n="privacy_policy_title">Privacy Policy</h1>
+
+        <div class="prose prose-invert max-w-none space-y-8 text-gray-400">
+            <section>
+                <h2 class="text-xl font-bold text-white mb-4" data-i18n="intro_title">1. Introduction</h2>
+                <p data-i18n="intro_desc">Welcome to Omnis ("we," "our," or "us"). We are committed to protecting your
+                    privacy. This Privacy
+                    Policy explains how we collect, use, and safeguard your information when you use our web tool suite
+                    and portal.</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-white mb-4" data-i18n="collection_title">2. Information Collection &
+                    Client-Side Logic</h2>
+                <p data-i18n="collection_desc1">Omnis is designed with a "Privacy-First" philosophy. Most of our tools
+                    process data exclusively in
+                    your browser (client-side). This means your files, videos, and sensitive data are processed locally
+                    on your machine and are never uploaded to our servers.</p>
+                <p data-i18n="collection_desc2">We may collect minimal technical data such as IP addresses and browser
+                    types for security and
+                    performance monitoring through Firebase and Google Analytics.</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-white mb-4" data-i18n="cookies_title">3. Cookies and Advertising</h2>
+                <p data-i18n="cookies_desc1">We use cookies to enhance your experience and provide personalized content.
+                    We work with third-party
+                    advertising partners, including Raptive (formerly AdThrive), to serve ads.</p>
+                <p data-i18n="cookies_desc2">These partners may use cookies and web beacons to collect data about your
+                    visits to this and other
+                    websites in order to provide advertisements about goods and services of interest to you.</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-white mb-4" data-i18n="compliance_title">4. GDPR / CCPA Compliance
+                </h2>
+                <p data-i18n="compliance_desc">If you are located in the EU or California, you have specific rights
+                    regarding your personal data.
+                    You have the right to access, correct, or delete your data. To exercise these rights, please contact
+                    us at info@omnis-tools.com.</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold text-white mb-4" data-i18n="legal_contact_title">5. Contact Us</h2>
+                <p data-i18n="legal_contact_desc">If you have any questions about this Privacy Policy, please contact us
+                    through our Contact Page.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="relative z-10 border-t border-gray-800 py-12 text-center text-xs text-gray-600">
+        <p data-i18n="copyright">&copy; 2026 Omnis. All rights reserved.</p>
+    </footer>
+    <script type="module">
+        import { initI18n } from '../Shared/i18n.js';
+        document.addEventListener('DOMContentLoaded', () => initI18n('legal'));
+    </script>
+</body>
+
+</html>
